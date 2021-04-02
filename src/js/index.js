@@ -13,7 +13,7 @@ const questions = [
       c: "Both A and B",
       d: "None of the above",
     },
-    correctAnswer: "a",
+    correctChoice: "a",
   },
   {
     question: "What is a mule the offspring of?",
@@ -23,7 +23,7 @@ const questions = [
       c: "2 mules",
       d: "Magic",
     },
-    correctAnswer: "b",
+    correctChoice: "b",
   },
   {
     question: "What is 9 + 10?",
@@ -33,14 +33,14 @@ const questions = [
       c: "Both 19 & 21",
       d: "Only a genius can solve this",
     },
-    correctAnswer: "b",
+    correctChoice: "b",
   },
 ];
 
 const quiz = document.getElementById("quiz");
 const submitButton = document.getElementById("results");
 const score = document.getElementById("score");
-
+const choice = Array.from(document.querySelectorAll("#choice"));
 //listen for start event, click, page load
 
 //display question or questions
@@ -57,6 +57,12 @@ function showQuestions(q) {
 }
 
 showQuestions(questions);
+
+var currentQuestion = {};
+var score = 0;
+
+const maxQuestions = 3;
+
 //listen for user answer click
 
 //check if choice is correct
