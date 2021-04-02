@@ -37,10 +37,26 @@ const questions = [
   },
 ];
 
+const quiz = document.getElementById("quiz");
+const submitButton = document.getElementById("results");
+const score = document.getElementById("score");
+
 //listen for start event, click, page load
 
 //display question or questions
+/*
+function buildQuiz() {
+  //stores HTML output
+  const output = [];
+  console.log(questions);
+}
+*/
+function showQuestions(q) {
+  var showQuestion = document.getElementById("question");
+  showQuestion.textContent = q.question;
+}
 
+showQuestions(questions);
 //listen for user answer click
 
 //check if choice is correct
@@ -49,5 +65,3 @@ const questions = [
 
 //if question number is less than questions.Length show next question
 //else display results
-
-var score = 0;

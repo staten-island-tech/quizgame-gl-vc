@@ -6,6 +6,7 @@ body {
   box-sizing: border-box;
   /*   background-color: red; */
   background-color: #eeedff;
+  text-align: center;
 }
 /*
 .container {
@@ -116,4 +117,8 @@ button {
   background-color: #ffffff;
   margin: 1rem;
   font-size: 2rem;
+}
+
+.hide {
+  display: none;
 }
