@@ -6,7 +6,7 @@ console.log("connected");
 
 const questionData = [
   {
-    question: "What is a tomato?",
+    question: "What is a tomatos?",
     a: "A vegetable",
     b: "A fruit",
     c: "Both A and B",
@@ -84,10 +84,10 @@ nextBtn.addEventListener("click", () => {
   showQuestions();
 });
 
-prevBtn.addEventListener("click", () => {
-  //currentQuiz--;
-  showQuestions();
-});
+///prevBtn.addEventListener("click", () => {
+//currentQuiz--;
+// showQuestions();
+//});
 
 //check if choice is correct
 //if answer is true then update score show correct modal/green check
