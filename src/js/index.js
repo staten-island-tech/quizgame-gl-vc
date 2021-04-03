@@ -78,6 +78,11 @@ nextBtn.addEventListener("click", () => {
   showQuestions();
 });
 
+prevBtn.addEventListener("click", () => {
+  currentQuiz--;
+  showQuestions();
+});
+
 //check if choice is correct
 //if answer is true then update score show correct modal/green check
 //else update score show false modal/red x
