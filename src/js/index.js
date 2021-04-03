@@ -7,12 +7,11 @@ console.log("connected");
 const questionData = [
   {
     question: "What is a tomato?",
-    choices: {
-      a: "A vegetable",
-      b: "A fruit",
-      c: "Both A and B",
-      d: "None of the above",
-    },
+    a: "A vegetable",
+    b: "A fruit",
+    c: "Both A and B",
+    d: "None of the above",
+
     correctChoice: "a",
   },
   {
@@ -40,11 +39,14 @@ const questionData = [
 const quiz = document.getElementById("quiz");
 const submitButton = document.getElementById("results");
 const score = document.getElementById("score");
-const choices = document.querySelectorAll("choices");
 const question = document.getElementById("question");
 const nextBtn = document.getElementById("next");
 const prevBtn = document.getElementById("previous");
 const results = document.getElementById("results");
+const choiceA = document.getElementById("choiceA");
+const choiceB = document.getElementById("choiceB");
+const choiceC = document.getElementById("choiceC");
+const choiceD = document.getElementById("choiceD");
 //listen for start event, click, page load
 
 //display question or questions
@@ -63,7 +65,11 @@ var points = 0;
 function showQuestions() {
   deselectAnswers();
   const currentQuestionData = questionData[currentQuiz];
-  question.innerText = currentQuestionData.question;
+  question.innerText = "hi";
+  choiceA.innerText = "hi";
+  choiceB.innerText = currentQuestionData.choices[b];
+  choiceC.innerText = currentQuestionData.choices[c];
+  choiceD.innerText = currentQuestionData.choices[d];
 }
 
 function deselectAnswers() {
@@ -74,12 +80,12 @@ showQuestions();
 
 //listen for user answer click
 nextBtn.addEventListener("click", () => {
-  currentQuiz++;
+  // currentQuiz++;
   showQuestions();
 });
 
 prevBtn.addEventListener("click", () => {
-  currentQuiz--;
+  //currentQuiz--;
   showQuestions();
 });
 
