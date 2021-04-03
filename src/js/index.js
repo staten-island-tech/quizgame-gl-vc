@@ -4,7 +4,7 @@ console.log("connected");
 
 //question object
 
-const questions = [
+const questionData = [
   {
     question: "What is a tomato?",
     choices: {
@@ -40,7 +40,11 @@ const questions = [
 const quiz = document.getElementById("quiz");
 const submitButton = document.getElementById("results");
 const score = document.getElementById("score");
-const choice = Array.from(document.querySelectorAll("#choice"));
+const choices = document.querySelectorAll("choices");
+const question = document.getElementById("question");
+const nextBtn = document.getElementById("next");
+const prevBtn = document.getElementById("previous");
+const results = document.getElementById("results");
 //listen for start event, click, page load
 
 //display question or questions
@@ -51,19 +55,28 @@ function buildQuiz() {
   console.log(questions);
 }
 */
-function showQuestions(q) {
-  var showQuestion = document.getElementById("question");
-  showQuestion.textContent = q.question;
+
+var currentQuiz = 0;
+var points = 0;
+
+//display first question in array above
+function showQuestions() {
+  deselectAnswers();
+  const currentQuestionData = questionData[currentQuiz];
+  question.innerText = currentQuestionData.question;
 }
 
-showQuestions(questions);
+function deselectAnswers() {
+  choices.forEach((choice) => (choice.checked = false));
+}
 
-var currentQuestion = {};
-var score = 0;
-
-const maxQuestions = 3;
+showQuestions();
 
 //listen for user answer click
+nextBtn.addEventListener("click", () => {
+  currentQuiz++;
+  showQuestions();
+});
 
 //check if choice is correct
 //if answer is true then update score show correct modal/green check
