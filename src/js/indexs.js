@@ -6,32 +6,27 @@ console.log("connected");
 
 const questionData = [
   {
-    question: "What is a tomatos?",
+    question: "What is a tomato?",
     a: "A vegetable",
     b: "A fruit",
     c: "Both A and B",
     d: "None of the above",
-
     correctChoice: "a",
   },
   {
     question: "What is a mule the offspring of?",
-    choices: {
-      a: "A male horse & a female donkey",
-      b: "A female horse & a male donkey",
-      c: "2 mules",
-      d: "Magic",
-    },
+    a: "A male horse & a female donkey",
+    b: "A female horse & a male donkey",
+    c: "2 mules",
+    d: "Magic",
     correctChoice: "b",
   },
   {
     question: "What is 9 + 10?",
-    choices: {
-      a: "19",
-      b: "21",
-      c: "Both 19 & 21",
-      d: "Only a genius can solve this",
-    },
+    a: "19",
+    b: "21",
+    c: "Both 19 & 21",
+    d: "Only a genius can solve this",
     correctChoice: "b",
   },
 ];
@@ -47,6 +42,7 @@ const choiceA = document.getElementById("choiceA");
 const choiceB = document.getElementById("choiceB");
 const choiceC = document.getElementById("choiceC");
 const choiceD = document.getElementById("choiceD");
+const ansChoices = document.getElementById("ansChoices");
 //listen for start event, click, page load
 
 //display question or questions
@@ -63,37 +59,52 @@ var points = 0;
 
 //display first question in array above
 function showQuestions() {
-  deselectAnswers();
+  // deselectAnswers();
   const currentQuestionData = questionData[currentQuiz];
-  question.innerText = "hi";
-  choiceA.innerText = "hi";
-  choiceB.innerText = currentQuestionData.choices[b];
-  choiceC.innerText = currentQuestionData.choices[c];
-  choiceD.innerText = currentQuestionData.choices[d];
+  question.innerText = currentQuestionData.question;
+  choiceA.innerText = currentQuestionData.a;
+  choiceB.innerText = currentQuestionData.b;
+  choiceC.innerText = currentQuestionData.c;
+  choiceD.innerText = currentQuestionData.d;
 }
-
+/*
 function deselectAnswers() {
   choices.forEach((choice) => (choice.checked = false));
 }
-
+*/
 showQuestions();
 
 //listen for user answer click
 nextBtn.addEventListener("click", () => {
-  // currentQuiz++;
+  currentQuiz++;
   showQuestions();
 });
 
-///prevBtn.addEventListener("click", () => {
-//currentQuiz--;
-// showQuestions();
-//});
+prevBtn.addEventListener("click", () => {
+  currentQuiz--;
+  showQuestions();
+});
 
 //check if choice is correct
+
+function scoreboard() {}
+questionData.forEach(() => {
+  selectedAnswer = ansChoices.addEventListener("click", () => {
+    console.log();
+  });
+});
+
+function retrieve() {
+  // retrieveChoice = document.getElementsByClassName("");
+  console.log("hi");
+}
+
+// find selected answer
+// const answerContainer = answerContainers[questionNumber];
+//const selector = `input[name=question${questionNumber}]:checked`;
+// const userAnswer = (answerContainer.querySelector(selector) || {}).value;
 //if answer is true then update score show correct modal/green check
 //else update score show false modal/red x
 
 //if question number is less than questions.Length show next question
 //else display results
-
-console.log("hi");
