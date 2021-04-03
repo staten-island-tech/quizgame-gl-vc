@@ -6,7 +6,7 @@ console.log("connected");
 
 const questionData = [
   {
-    question: "What is a tomato?",
+    question: "What is a tomatos?",
     a: "A vegetable",
     b: "A fruit",
     c: "Both A and B",
@@ -46,13 +46,6 @@ const ansChoices = document.getElementById("ansChoices");
 //listen for start event, click, page load
 
 //display question or questions
-/*
-function buildQuiz() {
-  //stores HTML output
-  const output = [];
-  console.log(questions);
-}
-*/
 
 var currentQuiz = 0;
 var points = 0;
