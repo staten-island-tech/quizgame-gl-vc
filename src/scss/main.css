@@ -56,35 +56,23 @@ h1 {
 button {
   border-radius: 20%;
 }
-
+*/
 .choice-a {
   background-color: #c1fafe;
-  width: 12rem;
-  height: 8rem;
-  margin: 2rem;
 }
 
 .choice-b {
   background-color: #fffad0;
-  width: 12rem;
-  height: 8rem;
-  margin: 2rem;
 }
 
 .choice-c {
   background-color: #f5e5fb;
-  width: 12rem;
-  height: 8rem;
-  margin: 2rem;
 }
 
 .choice-d {
   background-color: #daf6ec;
-  width: 12rem;
-  height: 8rem;
-  margin: 2rem;
 }
-*/
+
 #container {
   text-align: center;
 }

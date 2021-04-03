@@ -79,7 +79,7 @@ prevBtn.addEventListener("click", () => {
 });
 
 //check if choice is correct
-
+/*
 function scoreboard() {}
 questionData.forEach(() => {
   selectedAnswer = ansChoices.addEventListener("click", () => {
@@ -91,7 +91,7 @@ function retrieve() {
   // retrieveChoice = document.getElementsByClassName("");
   console.log("hi");
 }
-
+*/
 // find selected answer
 // const answerContainer = answerContainers[questionNumber];
 //const selector = `input[name=question${questionNumber}]:checked`;
