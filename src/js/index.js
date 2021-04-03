@@ -95,3 +95,5 @@ nextBtn.addEventListener("click", () => {
 
 //if question number is less than questions.Length show next question
 //else display results
+
+console.log("hi");
