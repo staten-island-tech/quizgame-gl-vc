@@ -6,7 +6,7 @@ console.log("connected");
 
 const questionData = [
   {
-    question: "What is a tomatos?",
+    question: "What is a tomato?",
     a: "A vegetable",
     b: "A fruit",
     c: "Both A and B",
