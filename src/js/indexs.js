@@ -6,17 +6,17 @@ console.log("connected");
 
 const questionData = [
   {
-    question: "What is a tomatos?",
-    a: "A vegetable",
-    b: "A fruit",
+    question: "What is a tomato?",
+    a: "vegetable",
+    b: "fruit",
     c: "Both A and B",
     d: "None of the above",
-    correctChoice: "a",
+    correctChoice: "b",
   },
   {
     question: "What is a mule the offspring of?",
-    a: "A male horse & a female donkey",
-    b: "A female horse & a male donkey",
+    a: "male horse & female donkey",
+    b: "female horse & male donkey",
     c: "2 mules",
     d: "Magic",
     correctChoice: "b",
@@ -25,9 +25,25 @@ const questionData = [
     question: "What is 9 + 10?",
     a: "19",
     b: "21",
-    c: "Both 19 & 21",
+    c: "19 & 21",
     d: "Only a genius can solve this",
     correctChoice: "b",
+  },
+  {
+    question: "Where is SITHS located?",
+    a: "458 Clawson Ave",
+    b: "458 Clawsson St",
+    c: "485 Clawson St",
+    d: "485 Clawson Rd",
+    correctChoice: "c",
+  },
+  {
+    question: "What is the powerhouse of a cell?",
+    a: "vacuole",
+    b: "lysosome",
+    c: "ribosomes",
+    d: "mitochondria",
+    correctChoice: "d",
   },
 ];
 
@@ -101,3 +117,16 @@ function retrieve() {
 
 //if question number is less than questions.Length show next question
 //else display results
+
+//disable buttons
+/* function disableQuestion1() {
+  choiceA.disabled = true;
+  choiceB.disabled = true;
+  choiceC.disabled = true;
+  choiceD.disabled = true;
+}
+
+choiceA.addEventListener("click", disableQuestion1);
+choiceB.addEventListener("click", disableQuestion1);
+choiceC.addEventListener("click", disableQuestion1);
+choiceD.addEventListener("click", disableQuestion1); */
