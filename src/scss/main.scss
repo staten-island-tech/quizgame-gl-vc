@@ -63,6 +63,13 @@ button {
   font-size: 1.6rem;
 }
 
+button:hover {
+    transition: all 0.2s ease-in;
+    box-shadow: 0 5px 5px 0 /*rgba(189, 175, 175, 0.4)*/ rgba(224, 88, 122, 0.4);
+   /* transform: translateZ(-4px); */
+   transform: translateZ(-2px);
+  }
+
 .choice-b  {
   background-color: #fffad0;
   width: 12rem;

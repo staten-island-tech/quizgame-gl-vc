@@ -1,5 +1,7 @@
 console.log("connected");
 
+import { questionData } from "../questions.js";
+
 //quiz question array
 
 //question object
@@ -48,8 +50,8 @@ const questionData = [
 ];
 
 const quiz = document.getElementById("quiz");
-const submitButton = document.getElementById("results");
-const score = document.getElementById("score");
+/*const submitButton = document.getElementById("results");
+const score = document.getElementById("score"); */
 const question = document.getElementById("question");
 const nextBtn = document.getElementById("next");
 const prevBtn = document.getElementById("previous");
@@ -63,8 +65,27 @@ const ansChoices = document.getElementById("ansChoices");
 
 //display question or questions
 
-var currentQuiz = 0;
-var points = 0;
+const output = [];
+
+questionData.forEach((currentQuestionData, questionNumber)) => {
+
+  const ansChoices = [];
+
+  for (letter in currentQuestionData.ansChoices) {
+    ansChoices.push(
+      `<label>
+      <input type="radio" name="question${questionNumber}" value="${letter}">
+      ${letter} :
+      ${currentQuestionData.ansChoices[letter]}
+      </label>`
+    );
+  }
+}
+
+//var currentQuiz = 0;
+let currentQuiz = 0;
+//var points = 0;
+//let points = 0;
 
 //display first question in array above
 function showQuestions() {
@@ -95,23 +116,58 @@ prevBtn.addEventListener("click", () => {
 });
 
 //check if choice is correct
-/*
-function scoreboard() {}
+
+/*function scoreboard() {}
 questionData.forEach(() => {
   selectedAnswer = ansChoices.addEventListener("click", () => {
-    console.log();
+    points++;
+    answerContainers[questionNumber].style.color = "lightgreen";
   });
-});
+}); */
+const quizContainer = document.getElementById("quiz");
 
-function retrieve() {
-  // retrieveChoice = document.getElementsByClassName("");
+quizContainer.innerHTML = output.join("");
+
+function showResults() {
+  const answerContainers = quizContainer.querySelectorAll("#ansChoices");
+
+  let points = 0;
+
+  questionData.forEach((currentQuestionData, questionNumber) => {
+    const answerContainer = answerContainers[questionNumber];
+    const selector = `input[name=question${questionNumber}]:checked`;
+    const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+
+    if (userAnswer === currentQuestionData.correctChoice) {
+      points++;
+      answerContainers[questionNumber].style.color = "lightgreen";
+    } else {
+      answerContainers[questionNumber].style.color = "red";
+    }
+  });
+
+  /*if (userAnswer === currentQuestionData.correctChoice) {
+  points++;
+  answerContainers[questionNumber].style.color = "lightgreen";
+} else {
+  answerContainers[questionNumber].style.color = "red";
+} */
+
+  results.innerHTML = `${points} out of ${currentQuestionData.length}`;
+
+  const submitButton = document.getElementById("results");
+  const score = document.getElementById("score");
+  const quizContainer = document.getElementById("quiz");
+
+  /*function retrieve() {
+  retrieveChoice = document.getElementsByClassName("");
   console.log("hi");
-}
-*/
+} 
+
 // find selected answer
-// const answerContainer = answerContainers[questionNumber];
-//const selector = `input[name=question${questionNumber}]:checked`;
-// const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+const answerContainer = answerContainers[questionNumber];
+const selector = `input[name=question${questionNumber}]:checked`;
+const userAnswer = (answerContainer.querySelector(selector) || {}).value;
 //if answer is true then update score show correct modal/green check
 //else update score show false modal/red x
 
@@ -130,3 +186,6 @@ choiceA.addEventListener("click", disableQuestion1);
 choiceB.addEventListener("click", disableQuestion1);
 choiceC.addEventListener("click", disableQuestion1);
 choiceD.addEventListener("click", disableQuestion1); */
+
+  submitButton.addEventListener("click", showResults);
+}
