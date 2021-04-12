@@ -57,20 +57,32 @@ button {
   border-radius: 20%;
 }
 */
-.choice-a {
+.choice-a  {
   background-color: #c1fafe;
+  width: 12rem;
+  height: 10rem;
+  font-size: 1.6rem;
 }
 
-.choice-b {
+.choice-b  {
   background-color: #fffad0;
+  width: 12rem;
+  height: 10rem;
+  font-size: 1.6rem;
 }
 
-.choice-c {
+.choice-c  {
   background-color: #f5e5fb;
+  width: 12rem;
+  height: 10rem;
+  font-size: 1.6rem;
 }
 
-.choice-d {
+.choice-d  {
   background-color: #daf6ec;
+  width: 12rem;
+  height: 10rem;
+  font-size: 1.6rem;
 }
 
 #container {
@@ -83,6 +95,7 @@ button {
   padding: 1rem;
   font-family: "Lato", sans-serif;
   color: darkgoldenrod;
+  /*background-color: lightblue; */
 }
 
 #quizzes {
@@ -113,9 +126,25 @@ button {
   background-color: #ffffff;
   margin: 1rem;
   font-size: 2rem;
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
 }
 
 #quiz #question {
   font-size: 2.5rem;
+  font-family: "Lato", sans-serif;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.active-slide {
+  opacity: 2;
+  z-index: 3;
 }
 /*# sourceMappingURL=main.css.map */
