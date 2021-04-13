@@ -76,7 +76,7 @@ choiceB.addEventListener("click", checkAnswer("b"));
 choiceC.addEventListener("click", checkAnswer("c"));
 choiceD.addEventListener("click", checkAnswer("d"));
 
-function checkAnswer() {
+function checkAnswer(answer) {
   console.log("hi");
   if (answer == questionData[currentQuiz].correctChoice) {
     score++;
@@ -95,8 +95,6 @@ questionData.forEach(() => {
   });
 }); */
 
-//HERE
-/*
 const quizContainer = document.getElementById("quiz");
 
 quizContainer.innerHTML = output.join("");
@@ -126,8 +124,6 @@ function showResults() {
   answerContainers[questionNumber].style.color = "red";
 } */
 
-//HEREEEE
-/*
   results.innerHTML = `${points} out of ${currentQuestionData.length}`;
 
   const submitButton = document.getElementById("results");
@@ -162,8 +158,5 @@ choiceB.addEventListener("click", disableQuestion1);
 choiceC.addEventListener("click", disableQuestion1);
 choiceD.addEventListener("click", disableQuestion1); */
 
-//HERE
-/*
   submitButton.addEventListener("click", showResults);
 }
-*/
