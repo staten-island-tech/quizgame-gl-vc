@@ -13,7 +13,9 @@ const question = document.getElementById("question");
 const nextBtn = document.getElementById("next");
 const prevBtn = document.getElementById("previous");
 const results = document.getElementById("results");
-const choiceA = document.getElementById("choiceA");
+const choiceA = document
+  .getElementById("choiceA")
+  .addEventListener("click", function (checkAnswer) {});
 const choiceB = document.getElementById("choiceB");
 const choiceC = document.getElementById("choiceC");
 const choiceD = document.getElementById("choiceD");
@@ -22,6 +24,8 @@ const ansChoices = document.getElementById("ansChoices");
 
 //display question or questions
 
+//HERE
+/*
 const output = [];
 
 questionData.forEach((currentQuestionData, questionNumber) => {
@@ -42,10 +46,12 @@ questionData.forEach((currentQuestionData, questionNumber) => {
 let currentQuiz = 0;
 //var points = 0;
 //let points = 0;
+*/
+
+let currentQuiz = 0;
 
 //display first question in array above
 function showQuestions() {
-  // deselectAnswers();
   const currentQuestionData = questionData[currentQuiz];
   question.innerText = currentQuestionData.question;
   choiceA.innerText = currentQuestionData.a;
@@ -53,11 +59,7 @@ function showQuestions() {
   choiceC.innerText = currentQuestionData.c;
   choiceD.innerText = currentQuestionData.d;
 }
-/*
-function deselectAnswers() {
-  choices.forEach((choice) => (choice.checked = false));
-}
-*/
+
 showQuestions();
 
 //listen for user answer click
@@ -71,6 +73,9 @@ prevBtn.addEventListener("click", () => {
   showQuestions();
 });
 
+function checkAnswer() {
+  console.log("hi");
+}
 //check if choice is correct
 
 /*function scoreboard() {}
@@ -81,6 +86,8 @@ questionData.forEach(() => {
   });
 }); */
 
+//HERE
+/*
 const quizContainer = document.getElementById("quiz");
 
 quizContainer.innerHTML = output.join("");
@@ -110,6 +117,8 @@ function showResults() {
   answerContainers[questionNumber].style.color = "red";
 } */
 
+//HEREEEE
+/*
   results.innerHTML = `${points} out of ${currentQuestionData.length}`;
 
   const submitButton = document.getElementById("results");
@@ -144,5 +153,8 @@ choiceB.addEventListener("click", disableQuestion1);
 choiceC.addEventListener("click", disableQuestion1);
 choiceD.addEventListener("click", disableQuestion1); */
 
+//HERE
+/*
   submitButton.addEventListener("click", showResults);
 }
+*/
