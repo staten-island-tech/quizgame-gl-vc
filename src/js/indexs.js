@@ -13,9 +13,7 @@ const question = document.getElementById("question");
 const nextBtn = document.getElementById("next");
 const prevBtn = document.getElementById("previous");
 const results = document.getElementById("results");
-const choiceA = document
-  .getElementById("choiceA")
-  .addEventListener("click", function (checkAnswer) {});
+const choiceA = document.getElementById("choiceA");
 const choiceB = document.getElementById("choiceB");
 const choiceC = document.getElementById("choiceC");
 const choiceD = document.getElementById("choiceD");
@@ -73,8 +71,15 @@ prevBtn.addEventListener("click", () => {
   showQuestions();
 });
 
-function checkAnswer() {
+choiceA.addEventListener("click", checkAnswer);
+choiceB.addEventListener("click", checkAnswer);
+choiceC.addEventListener("click", checkAnswer);
+choiceD.addEventListener("click", checkAnswer);
+
+function checkAnswer(answer) {
   console.log("hi");
+  let userAns = answer.textContext;
+  console.log(userAns);
 }
 //check if choice is correct
 
