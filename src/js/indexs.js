@@ -22,8 +22,6 @@ const ansChoices = document.getElementById("ansChoices");
 
 //display question or questions
 
-//HERE
-/*
 const output = [];
 
 questionData.forEach((currentQuestionData, questionNumber) => {
@@ -44,9 +42,7 @@ questionData.forEach((currentQuestionData, questionNumber) => {
 let currentQuiz = 0;
 //var points = 0;
 //let points = 0;
-*/
 
-let currentQuiz = 0;
 let score = 0;
 //display first question in array above
 function showQuestions() {
