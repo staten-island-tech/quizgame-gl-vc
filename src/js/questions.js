@@ -40,3 +40,5 @@ const questionData = [
     correctChoice: "d",
   },
 ];
+
+export { questionData };
