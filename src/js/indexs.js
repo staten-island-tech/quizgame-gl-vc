@@ -47,7 +47,7 @@ let currentQuiz = 0;
 */
 
 let currentQuiz = 0;
-
+let score = 0;
 //display first question in array above
 function showQuestions() {
   const currentQuestionData = questionData[currentQuiz];
@@ -71,15 +71,19 @@ prevBtn.addEventListener("click", () => {
   showQuestions();
 });
 
-choiceA.addEventListener("click", checkAnswer);
-choiceB.addEventListener("click", checkAnswer);
-choiceC.addEventListener("click", checkAnswer);
-choiceD.addEventListener("click", checkAnswer);
+choiceA.addEventListener("click", checkAnswer("a"));
+choiceB.addEventListener("click", checkAnswer("b"));
+choiceC.addEventListener("click", checkAnswer("c"));
+choiceD.addEventListener("click", checkAnswer("d"));
 
-function checkAnswer(answer) {
+function checkAnswer() {
   console.log("hi");
-  let userAns = answer.textContext;
-  console.log(userAns);
+  if (answer == questionData[currentQuiz].correctChoice) {
+    score++;
+    console.log(score);
+  } else {
+    console.log("notworking");
+  }
 }
 //check if choice is correct
 
