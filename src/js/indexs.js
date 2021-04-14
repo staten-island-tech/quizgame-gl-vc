@@ -70,16 +70,16 @@ import { questionData } from "./questions";
     });
 
     // show number of correct answers out of total
-    resultsContainer.innerHTML = `${points} out of ${questionData.length} correct!`;
+    //resultsContainer.innerHTML = `${points} out of ${questionData.length} correct!`;
     if (points >= 4) {
       resultsContainer.innerHTML = `${points} out of ${questionData.length} 
-        *Congrats! You are a GENIUS!`;
+         - Congrats! You are a GENIUS!`;
     } else {
       resultsContainer.innerHTML = `${points} out of ${questionData.length}       
-       *Was that really your best??`;
+        - Was that really your best??`;
     }
     if (points == 0) {
-      resultsContainer.innerHTML = `*oof, at least you learned some new things ~ the more you know...`;
+      resultsContainer.innerHTML = ` - oof, at least you learned some new things ~ the more you know...`;
     }
   }
 
@@ -134,3 +134,14 @@ import { questionData } from "./questions";
   prevBtn.addEventListener("click", showPreviousSlide);
   nextBtn.addEventListener("click", showNextSlide);
 })();
+
+//restart quiz
+let fullReset = document.getElementById("restart");
+
+fullReset.addEventListener(
+  "click",
+  function (e) {
+    location.reload();
+  },
+  false
+);
