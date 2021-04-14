@@ -1,6 +1,6 @@
 console.log("connected");
 
-import { myQuestions } from "./questions";
+import { questionData } from "./questions";
 
 //immediately invoked function
 (function () {
@@ -9,7 +9,7 @@ import { myQuestions } from "./questions";
     // variable to store the HTML output, including questions and answer choices
     const output = [];
 
-    myQuestions.forEach((currentQuestion, questionNumber) => {
+    questionData.forEach((currentQuestion, questionNumber) => {
       // stores the list of possible answers
       const answers = [];
 
@@ -44,10 +44,10 @@ import { myQuestions } from "./questions";
     const answerContainers = quizContainer.querySelectorAll(".answers");
 
     // keep track of user's answers
-    let numCorrect = 0;
+    let points = 0;
 
     // for each question...
-    myQuestions.forEach((currentQuestion, questionNumber) => {
+    questionData.forEach((currentQuestion, questionNumber) => {
       // find selected answer
       const answerContainer = answerContainers[questionNumber];
       const selector = `input[name=question${questionNumber}]:checked`;
@@ -57,7 +57,7 @@ import { myQuestions } from "./questions";
       // if answer is correct
       if (userAnswer === currentQuestion.correctAnswer) {
         // add to the number of correct answers
-        numCorrect++;
+        points++;
 
         // color the answers green
         answerContainers[questionNumber].style.color = "lightgreen";
@@ -70,7 +70,17 @@ import { myQuestions } from "./questions";
     });
 
     // show number of correct answers out of total
-    resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length} correct!`;
+    //resultsContainer.innerHTML = `${points} out of ${myQuestions.length} correct!`;
+    if (points >= 4) {
+      resultsContainer.innerHTML = `${points} out of ${myQuestions.length} 
+        Congrats! You are a GENIUS!`;
+    } else {
+      resultsContainer.innerHTML = `${points} out of ${myQuestions.length}       
+       Was that really your best??`;
+    }
+    if (points == 0) {
+      resultsContainer.innerHTML = `oof, at least you learned some new things ~ the more you know...`;
+    }
   }
 
   function showSlide(n) {
@@ -80,17 +90,17 @@ import { myQuestions } from "./questions";
     slides[n].classList.add("active-slide");
     currentSlide = n;
     if (currentSlide === 0) {
-      previousButton.style.display = "none";
+      prevBtn.style.display = "none";
     } else {
-      previousButton.style.display = "inline-block";
+      prevBtn.style.display = "inline-block";
     }
     //on last slide
     if (currentSlide === slides.length - 1) {
-      nextButton.style.display = "none";
-      submitButton.style.display = "inline-block";
+      nextBtn.style.display = "none";
+      submitBtn.style.display = "inline-block";
     } else {
-      nextButton.style.display = "inline-block";
-      submitButton.style.display = "none";
+      nextBtn.style.display = "inline-block";
+      submitBtn.style.display = "none";
     }
   }
 
@@ -105,14 +115,14 @@ import { myQuestions } from "./questions";
   // Variables
   const quizContainer = document.getElementById("quiz");
   const resultsContainer = document.getElementById("results");
-  const submitButton = document.getElementById("submit");
+  const submitBtn = document.getElementById("submit");
 
   //runs the quiz
   buildQuiz();
 
   // Pagination
-  const previousButton = document.getElementById("previous");
-  const nextButton = document.getElementById("next");
+  const prevBtn = document.getElementById("previous");
+  const nextBtn = document.getElementById("next");
   const slides = document.querySelectorAll(".slide");
 
   let currentSlide = 0;
@@ -120,7 +130,7 @@ import { myQuestions } from "./questions";
   showSlide(currentSlide);
 
   // Event listeners
-  submitButton.addEventListener("click", showResults);
-  previousButton.addEventListener("click", showPreviousSlide);
-  nextButton.addEventListener("click", showNextSlide);
+  submitBtn.addEventListener("click", showResults);
+  prevBtn.addEventListener("click", showPreviousSlide);
+  nextBtn.addEventListener("click", showNextSlide);
 })();

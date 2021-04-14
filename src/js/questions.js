@@ -1,4 +1,4 @@
-const myQuestions = [
+const questionData = [
   {
     question: "What is a tomato?",
     answers: {
@@ -51,4 +51,4 @@ const myQuestions = [
   },
 ];
 
-export { myQuestions };
+export { questionData };
