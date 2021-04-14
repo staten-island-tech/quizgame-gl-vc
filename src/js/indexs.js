@@ -70,12 +70,12 @@ import { questionData } from "./questions";
     });
 
     // show number of correct answers out of total
-    //resultsContainer.innerHTML = `${points} out of ${myQuestions.length} correct!`;
+    //resultsContainer.innerHTML = `${points} out of ${questionData.length} correct!`;
     if (points >= 4) {
-      resultsContainer.innerHTML = `${points} out of ${myQuestions.length} 
+      resultsContainer.innerHTML = `${points} out of ${questionData.length} 
         Congrats! You are a GENIUS!`;
     } else {
-      resultsContainer.innerHTML = `${points} out of ${myQuestions.length}       
+      resultsContainer.innerHTML = `${points} out of ${questionData.length}       
        Was that really your best??`;
     }
     if (points == 0) {
