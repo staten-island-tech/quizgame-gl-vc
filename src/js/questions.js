@@ -4,8 +4,8 @@ const questionData = [
     answers: {
       a: "vegetable",
       b: "fruit",
-      c: "Both A and B",
-      d: "None of the above",
+      c: "both A and B",
+      d: "none of the above",
     },
     correctAnswer: "b",
   },
@@ -25,7 +25,7 @@ const questionData = [
       a: "19",
       b: "21",
       c: "19 & 21",
-      d: "Only a genius can solve this",
+      d: "only a genius can solve this",
     },
     correctAnswer: "b",
   },
@@ -48,6 +48,16 @@ const questionData = [
       d: "mitochondria",
     },
     correctAnswer: "d",
+  },
+  {
+    question: "Can you milk a male dairy cow?",
+    answers: {
+      a: "no",
+      b: "of course",
+      c: "is this even a question",
+      d: "both C and D",
+    },
+    correctAnswer: "a",
   },
 ];
 

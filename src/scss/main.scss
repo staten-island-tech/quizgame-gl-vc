@@ -19,6 +19,7 @@ h1 {
   background-color: #edfcff;
   display: inline-block;
   font-style: italic;
+  font-family: "Shadows Into Light", cursive, sans-serif;
 }
 .question {
   font-size: 2rem;
@@ -73,4 +74,7 @@ button:hover {
   font-size: 1.3rem;
   margin: 1rem;
   color: #18a6f8;
+}
+img {
+  width: 4rem;
 }
