@@ -1,158 +1,179 @@
 console.log("connected");
 
-import { questionData } from "./questions";
+import { myQuestions } from "./questions";
 
-//quiz question array
+//immediately invoked function
+(function () {
+  const myQuestions = [
+    {
+      question: "What is a tomato?",
+      answers: {
+        a: "vegetable",
+        b: "fruit",
+        c: "Both A and B",
+        d: "None of the above",
+      },
+      correctAnswer: "b",
+    },
+    {
+      question: "What is a mule the offspring of?",
+      answers: {
+        a: "male horse & female donkey",
+        b: "female horse & male donkey",
+        c: "2 mules",
+        d: "magic",
+      },
+      correctAnswer: "b",
+    },
+    {
+      question: "What is 9 + 10?",
+      answers: {
+        a: "19",
+        b: "21",
+        c: "19 & 21",
+        d: "Only a genius can solve this",
+      },
+      correctAnswer: "b",
+    },
+    {
+      question: "Where is SITHS located?",
+      answers: {
+        a: "458 Clawson Ave",
+        b: "458 Clawsson St",
+        c: "485 Clawson St",
+        d: "485 Clawson Rd",
+      },
+      correctAnswer: "c",
+    },
+    {
+      question: "What is the powerhouse of a cell?",
+      answers: {
+        a: "vacuole",
+        b: "lysosome",
+        c: "ribosomes",
+        d: "mitochondria",
+      },
+      correctAnswer: "d",
+    },
+  ];
 
-//question object
+  // Functions
+  function buildQuiz() {
+    // variable to store the HTML output, including questions and answer choices
+    const output = [];
 
-const quiz = document.getElementById("quiz");
-/*const submitButton = document.getElementById("results");
-const score = document.getElementById("score"); */
-const question = document.getElementById("question");
-const nextBtn = document.getElementById("next");
-const prevBtn = document.getElementById("previous");
-const results = document.getElementById("results");
-const choiceA = document.getElementById("choiceA");
-const choiceB = document.getElementById("choiceB");
-const choiceC = document.getElementById("choiceC");
-const choiceD = document.getElementById("choiceD");
-const ansChoices = document.getElementById("ansChoices");
-//listen for start event, click, page load
+    myQuestions.forEach((currentQuestion, questionNumber) => {
+      // stores the list of possible answers
+      const answers = [];
 
-//display question or questions
+      // and for each available answer...
+      for (letter in currentQuestion.answers) {
+        // ...add an HTML radio button
+        answers.push(
+          //<label> so that user can click on whole answer text instead of just radio button
+          `<label>
+              <input type="radio" name="question${questionNumber}" value="${letter}">
+              ${letter} :
+              ${currentQuestion.answers[letter]}
+            </label>`
+        );
+      }
 
-const output = [];
+      // add this question and its answers to the output
+      output.push(
+        `<div class="slide">
+            <div class="question"> ${currentQuestion.question} </div>
+            <div class="answers"> ${answers.join("")} </div>
+          </div>`
+      );
+    });
 
-questionData.forEach((currentQuestionData, questionNumber) => {
-  const ansChoices = [];
-
-  for (letter in currentQuestionData.ansChoices) {
-    ansChoices.push(
-      `<label>
-      <input type="radio" name="question${questionNumber}" value="${letter}">
-      ${letter} :
-      ${currentQuestionData.ansChoices[letter]}
-      </label>`
-    );
+    //combine output list into one string of HTML and put it on the page
+    quizContainer.innerHTML = output.join("");
   }
-});
 
-//var currentQuiz = 0;
-let currentQuiz = 0;
-//var points = 0;
-//let points = 0;
+  function showResults() {
+    // gather answer containers from our quiz HTML
+    const answerContainers = quizContainer.querySelectorAll(".answers");
 
-let score = 0;
-//display first question in array above
-function showQuestions() {
-  const currentQuestionData = questionData[currentQuiz];
-  question.innerText = currentQuestionData.question;
-  choiceA.innerText = currentQuestionData.a;
-  choiceB.innerText = currentQuestionData.b;
-  choiceC.innerText = currentQuestionData.c;
-  choiceD.innerText = currentQuestionData.d;
-}
+    // keep track of user's answers
+    let numCorrect = 0;
 
-showQuestions();
+    // for each question...
+    myQuestions.forEach((currentQuestion, questionNumber) => {
+      // find selected answer
+      const answerContainer = answerContainers[questionNumber];
+      const selector = `input[name=question${questionNumber}]:checked`;
+      //  || {} means if is or empty object... (value will be undefined)
+      const userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
-//listen for user answer click
-nextBtn.addEventListener("click", () => {
-  currentQuiz++;
-  showQuestions();
-});
+      // if answer is correct
+      if (userAnswer === currentQuestion.correctAnswer) {
+        // add to the number of correct answers
+        numCorrect++;
 
-prevBtn.addEventListener("click", () => {
-  currentQuiz--;
-  showQuestions();
-});
+        // color the answers green
+        answerContainers[questionNumber].style.color = "lightgreen";
+      }
+      // if answer is wrong or blank
+      else {
+        // color the answers red
+        answerContainers[questionNumber].style.color = "red";
+      }
+    });
 
-choiceA.addEventListener("click", checkAnswer("a"));
-choiceB.addEventListener("click", checkAnswer("b"));
-choiceC.addEventListener("click", checkAnswer("c"));
-choiceD.addEventListener("click", checkAnswer("d"));
-
-function checkAnswer(answer) {
-  console.log("hi");
-  if (answer == questionData[currentQuiz].correctChoice) {
-    score++;
-    console.log(score);
-  } else {
-    console.log("notworking");
+    // show number of correct answers out of total
+    resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length} correct!`;
   }
-}
-//check if choice is correct
 
-/*function scoreboard() {}
-questionData.forEach(() => {
-  selectedAnswer = ansChoices.addEventListener("click", () => {
-    points++;
-    answerContainers[questionNumber].style.color = "lightgreen";
-  });
-}); */
-
-const quizContainer = document.getElementById("quiz");
-
-quizContainer.innerHTML = output.join("");
-
-function showResults() {
-  const answerContainers = quizContainer.querySelectorAll("#ansChoices");
-
-  let points = 0;
-
-  questionData.forEach((currentQuestionData, questionNumber) => {
-    const answerContainer = answerContainers[questionNumber];
-    const selector = `input[name=question${questionNumber}]:checked`;
-    const userAnswer = (answerContainer.querySelector(selector) || {}).value;
-
-    if (userAnswer === currentQuestionData.correctChoice) {
-      points++;
-      answerContainers[questionNumber].style.color = "lightgreen";
+  function showSlide(n) {
+    //remove/hide current slide
+    slides[currentSlide].classList.remove("active-slide");
+    //show new slide
+    slides[n].classList.add("active-slide");
+    currentSlide = n;
+    if (currentSlide === 0) {
+      previousButton.style.display = "none";
     } else {
-      answerContainers[questionNumber].style.color = "red";
+      previousButton.style.display = "inline-block";
     }
-  });
+    //on last slide
+    if (currentSlide === slides.length - 1) {
+      nextButton.style.display = "none";
+      submitButton.style.display = "inline-block";
+    } else {
+      nextButton.style.display = "inline-block";
+      submitButton.style.display = "none";
+    }
+  }
 
-  /*if (userAnswer === currentQuestionData.correctChoice) {
-  points++;
-  answerContainers[questionNumber].style.color = "lightgreen";
-} else {
-  answerContainers[questionNumber].style.color = "red";
-} */
+  function showNextSlide() {
+    showSlide(currentSlide + 1);
+  }
 
-  results.innerHTML = `${points} out of ${currentQuestionData.length}`;
+  function showPreviousSlide() {
+    showSlide(currentSlide - 1);
+  }
 
-  const submitButton = document.getElementById("results");
-  const score = document.getElementById("score");
+  // Variables
   const quizContainer = document.getElementById("quiz");
+  const resultsContainer = document.getElementById("results");
+  const submitButton = document.getElementById("submit");
 
-  /*function retrieve() {
-  retrieveChoice = document.getElementsByClassName("");
-  console.log("hi");
-} 
+  //runs the quiz
+  buildQuiz();
 
-// find selected answer
-const answerContainer = answerContainers[questionNumber];
-const selector = `input[name=question${questionNumber}]:checked`;
-const userAnswer = (answerContainer.querySelector(selector) || {}).value;
-//if answer is true then update score show correct modal/green check
-//else update score show false modal/red x
+  // Pagination
+  const previousButton = document.getElementById("previous");
+  const nextButton = document.getElementById("next");
+  const slides = document.querySelectorAll(".slide");
 
-//if question number is less than questions.Length show next question
-//else display results
+  let currentSlide = 0;
+  // Show the first slide
+  showSlide(currentSlide);
 
-//disable buttons
-/* function disableQuestion1() {
-  choiceA.disabled = true;
-  choiceB.disabled = true;
-  choiceC.disabled = true;
-  choiceD.disabled = true;
-}
-
-choiceA.addEventListener("click", disableQuestion1);
-choiceB.addEventListener("click", disableQuestion1);
-choiceC.addEventListener("click", disableQuestion1);
-choiceD.addEventListener("click", disableQuestion1); */
-
+  // Event listeners
   submitButton.addEventListener("click", showResults);
-}
+  previousButton.addEventListener("click", showPreviousSlide);
+  nextButton.addEventListener("click", showNextSlide);
+})();
