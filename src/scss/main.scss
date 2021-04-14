@@ -13,20 +13,21 @@ body {
 h1 {
   font-weight: 300;
   margin-top: 5rem;
-  padding: 10px;
-  font-size: 20px;
+  padding: 1rem;
+  font-size: 2.5rem;
   color: #000000;
   background-color: #edfcff;
   display: inline-block;
+  font-style: italic;
 }
 .question {
-  font-size: 1.4rem;
+  font-size: 2rem;
   margin-bottom: 1.5rem;
 }
 .answers {
   text-align: left;
   display: inline-block;
-  font-size: 1rem;
+  font-size: 1.3rem;
 }
 .answers label {
   display: block;
@@ -40,7 +41,7 @@ button {
   border: 0rem;
   padding: 1rem;
   cursor: pointer;
-  margin: 0.5rem;
+  margin: 1rem;
 }
 
 button:hover {
@@ -69,6 +70,7 @@ button:hover {
   margin-top: 40px;
 }
 #results {
-  font-size: 1rem;
+  font-size: 1.3rem;
   margin: 1rem;
+  color: #18a6f8;
 }
