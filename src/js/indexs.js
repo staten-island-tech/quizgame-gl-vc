@@ -79,7 +79,7 @@ import { questionData } from "./questions";
         - Was that really your best??`;
     }
     if (points == 0) {
-      resultsContainer.innerHTML = ` - oof, at least you learned some new things ~ the more you know...`;
+      resultsContainer.innerHTML = `oof, at least you learned some new things ~ the more you know...`;
     }
   }
 
