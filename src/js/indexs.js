@@ -2,7 +2,7 @@ console.log("connected");
 
 import { questionData } from "./questions";
 
-//immediately invoked function
+//immediately invoked function = runs as soon as it's defined
 (function () {
   // Functions
   function buildQuiz() {
@@ -74,74 +74,73 @@ import { questionData } from "./questions";
     if (points >= 4) {
       resultsContainer.innerHTML = `${points} out of ${questionData.length} 
          - Congrats! You are a GENIUS!`;
+    } else if (points == 0) {
+      resultsContainer.innerHTML = `oof, at least you learned some new things ~ the more you know...`;
     } else {
       resultsContainer.innerHTML = `${points} out of ${questionData.length}       
         - Was that really your best??`;
     }
-    if (points == 0) {
-      resultsContainer.innerHTML = `oof, at least you learned some new things ~ the more you know...`;
+
+    function showSlide(n) {
+      //remove/hide current slide
+      slides[currentSlide].classList.remove("active-slide");
+      //show new slide
+      slides[n].classList.add("active-slide");
+      currentSlide = n;
+      if (currentSlide === 0) {
+        prevBtn.style.display = "none";
+      } else {
+        prevBtn.style.display = "inline-block";
+      }
+      //on last slide
+      if (currentSlide === slides.length - 1) {
+        nextBtn.style.display = "none";
+        submitBtn.style.display = "inline-block";
+      } else {
+        nextBtn.style.display = "inline-block";
+        submitBtn.style.display = "none";
+      }
     }
-  }
 
-  function showSlide(n) {
-    //remove/hide current slide
-    slides[currentSlide].classList.remove("active-slide");
-    //show new slide
-    slides[n].classList.add("active-slide");
-    currentSlide = n;
-    if (currentSlide === 0) {
-      prevBtn.style.display = "none";
-    } else {
-      prevBtn.style.display = "inline-block";
+    function showNextSlide() {
+      showSlide(currentSlide + 1);
     }
-    //on last slide
-    if (currentSlide === slides.length - 1) {
-      nextBtn.style.display = "none";
-      submitBtn.style.display = "inline-block";
-    } else {
-      nextBtn.style.display = "inline-block";
-      submitBtn.style.display = "none";
+
+    function showPreviousSlide() {
+      showSlide(currentSlide - 1);
     }
+
+    // Variables
+    const quizContainer = document.getElementById("quiz");
+    const resultsContainer = document.getElementById("results");
+    const submitBtn = document.getElementById("submit");
+
+    //runs the quiz
+    buildQuiz();
+
+    // Pagination
+    const prevBtn = document.getElementById("previous");
+    const nextBtn = document.getElementById("next");
+    const slides = document.querySelectorAll(".slide");
+
+    let currentSlide = 0;
+    // Show the first slide
+    showSlide(currentSlide);
+
+    // Event listeners
+    submitBtn.addEventListener("click", showResults);
+    prevBtn.addEventListener("click", showPreviousSlide);
+    nextBtn.addEventListener("click", showNextSlide);
   }
 
-  function showNextSlide() {
-    showSlide(currentSlide + 1);
-  }
+  //restart quiz
+  let fullReset = document.getElementById("restart");
 
-  function showPreviousSlide() {
-    showSlide(currentSlide - 1);
-  }
-
-  // Variables
-  const quizContainer = document.getElementById("quiz");
-  const resultsContainer = document.getElementById("results");
-  const submitBtn = document.getElementById("submit");
-
-  //runs the quiz
-  buildQuiz();
-
-  // Pagination
-  const prevBtn = document.getElementById("previous");
-  const nextBtn = document.getElementById("next");
-  const slides = document.querySelectorAll(".slide");
-
-  let currentSlide = 0;
-  // Show the first slide
-  showSlide(currentSlide);
-
-  // Event listeners
-  submitBtn.addEventListener("click", showResults);
-  prevBtn.addEventListener("click", showPreviousSlide);
-  nextBtn.addEventListener("click", showNextSlide);
-})();
-
-//restart quiz
-let fullReset = document.getElementById("restart");
-
-fullReset.addEventListener(
-  "click",
-  function (e) {
-    location.reload();
-  },
-  false
-);
+  fullReset.addEventListener(
+    "click",
+    function (e) {
+      location.reload();
+    },
+    false
+  );
+});
