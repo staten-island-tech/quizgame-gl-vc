@@ -75,14 +75,16 @@ import { questionData } from "./questions";
 
     // show number of correct answers out of total
     //resultsContainer.innerHTML = `${points} out of ${questionData.length} correct!`;
-    if (points >= 4) {
-      resultsContainer.innerHTML = `${points} out of ${questionData.length} 
+    function resultComment() {
+      if (points >= 4) {
+        resultsContainer.innerHTML = `${points} out of ${questionData.length} 
          - Congrats! You are a GENIUS!`;
-    } else if (points == 0) {
-      resultsContainer.innerHTML = `oof, at least you learned some new things ~ the more you know...`;
-    } else {
-      resultsContainer.innerHTML = `${points} out of ${questionData.length}       
+      } else if (points == 0) {
+        resultsContainer.innerHTML = `oof, at least you learned some new things ~ the more you know...`;
+      } else {
+        resultsContainer.innerHTML = `${points} out of ${questionData.length}       
         - Was that really your best??`;
+      }
     }
 
     function showSlide(n) {
