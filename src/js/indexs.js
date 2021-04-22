@@ -1,6 +1,6 @@
 console.log("connected");
 
-import { questionData } from "./questions.js";
+import { questionData } from "./questions";
 
 //immediately invoked function = runs as soon as it's defined
 (function () {
@@ -149,4 +149,4 @@ import { questionData } from "./questions.js";
     },
     false
   );
-})();
+});
