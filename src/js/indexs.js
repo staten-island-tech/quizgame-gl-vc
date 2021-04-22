@@ -14,18 +14,18 @@ import { questionData } from "./questions";
       const answers = [];
 
       // and for each available answer...
-      function addRadio() {
-        for (letter in currentQuestion.answers) {
-          // ...add an HTML radio button
-          answers.push(
-            //<label> so that user can click on whole answer text instead of just radio button
-            `<label>
+      //function addRadio() {
+      for (letter in currentQuestion.answers) {
+        // ...add an HTML radio button
+        answers.push(
+          //<label> so that user can click on whole answer text instead of just radio button
+          `<label>
               <input type="radio" name="question${questionNumber}" value="${letter}">
               ${letter} :
               ${currentQuestion.answers[letter]}
             </label>`
-          );
-        }
+        );
+        //  }
       }
 
       // add this question and its answers to the output
@@ -57,19 +57,18 @@ import { questionData } from "./questions";
       const userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
       // if answer is correct
-      function checkAnswer() {
-        if (userAnswer === currentQuestion.correctAnswer) {
-          // add to the number of correct answers
-          points++;
+      //function checkAnswer() {
+      if (userAnswer === currentQuestion.correctAnswer) {
+        // add to the number of correct answers
+        points++;
 
-          // color the answers green
-          answerContainers[questionNumber].style.color = "darkgreen";
-        }
-        // if answer is wrong or blank
-        else {
-          // color the answers red
-          answerContainers[questionNumber].style.color = "red";
-        }
+        // color the answers green
+        answerContainers[questionNumber].style.color = "darkgreen";
+      }
+      // if answer is wrong or blank
+      else {
+        // color the answers red
+        answerContainers[questionNumber].style.color = "red";
       }
     });
 
