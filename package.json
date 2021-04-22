@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.html",
+  "type": "module",
   "scripts": {
     "start": "parcel serve ./src/index.html",
     "build": "parcel build ./src/index.html"
