@@ -44,7 +44,7 @@ import { questionData } from "./questions";
     const answerContainers = quizContainer.querySelectorAll(".answers");
 
     // keep track of user's answers
-    let points = 0;
+    let numCorrect = 0;
 
     // for each question...
     questionData.forEach((currentQuestion, questionNumber) => {
@@ -57,7 +57,7 @@ import { questionData } from "./questions";
       // if answer is correct
       if (userAnswer === currentQuestion.correctAnswer) {
         // add to the number of correct answers
-        points++;
+        numCorrect++;
 
         // color the answers green
         answerContainers[questionNumber].style.color = "darkgreen";
@@ -69,19 +69,16 @@ import { questionData } from "./questions";
       }
     });
 
-    // show number of correct answers out of total
-    //resultsContainer.innerHTML = `${points} out of ${questionData.length} correct!`;
     if (points >= 4) {
       resultsContainer.innerHTML = `${points} out of ${questionData.length} 
-         - Congrats! You are a GENIUS!`;
+       - Congrats! You are a GENIUS!`;
     } else if (points == 0) {
       resultsContainer.innerHTML = `oof, at least you learned some new things ~ the more you know...`;
     } else {
       resultsContainer.innerHTML = `${points} out of ${questionData.length}       
-        - Was that really your best??`;
+      - Was that really your best??`;
     }
   }
-
   function showSlide(n) {
     //remove/hide current slide
     slides[currentSlide].classList.remove("active-slide");
@@ -89,17 +86,17 @@ import { questionData } from "./questions";
     slides[n].classList.add("active-slide");
     currentSlide = n;
     if (currentSlide === 0) {
-      prevBtn.style.display = "none";
+      previousButton.style.display = "none";
     } else {
-      prevBtn.style.display = "inline-block";
+      previousButton.style.display = "inline-block";
     }
     //on last slide
     if (currentSlide === slides.length - 1) {
-      nextBtn.style.display = "none";
-      submitBtn.style.display = "inline-block";
+      nextButton.style.display = "none";
+      submitButton.style.display = "inline-block";
     } else {
-      nextBtn.style.display = "inline-block";
-      submitBtn.style.display = "none";
+      nextButton.style.display = "inline-block";
+      submitButton.style.display = "none";
     }
   }
 
@@ -114,14 +111,14 @@ import { questionData } from "./questions";
   // Variables
   const quizContainer = document.getElementById("quiz");
   const resultsContainer = document.getElementById("results");
-  const submitBtn = document.getElementById("submit");
+  const submitButton = document.getElementById("submit");
 
   //runs the quiz
   buildQuiz();
 
   // Pagination
-  const prevBtn = document.getElementById("previous");
-  const nextBtn = document.getElementById("next");
+  const previousButton = document.getElementById("previous");
+  const nextButton = document.getElementById("next");
   const slides = document.querySelectorAll(".slide");
 
   let currentSlide = 0;
@@ -129,18 +126,7 @@ import { questionData } from "./questions";
   showSlide(currentSlide);
 
   // Event listeners
-  submitBtn.addEventListener("click", showResults);
-  prevBtn.addEventListener("click", showPreviousSlide);
-  nextBtn.addEventListener("click", showNextSlide);
-
-  //restart quiz
-  let fullReset = document.getElementById("restart");
-
-  fullReset.addEventListener(
-    "click",
-    function (e) {
-      location.reload();
-    },
-    false
-  );
+  submitButton.addEventListener("click", showResults);
+  previousButton.addEventListener("click", showPreviousSlide);
+  nextButton.addEventListener("click", showNextSlide);
 })();
