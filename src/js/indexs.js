@@ -148,4 +148,4 @@ import { questionData } from "./questions";
     },
     false
   );
-});
+})();
