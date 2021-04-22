@@ -5,7 +5,6 @@ import { questionData } from "./questions";
 //immediately invoked function = runs as soon as it's defined
 (function () {
   // Functions
-
   function buildQuiz() {
     // variable to store the HTML output, including questions and answer choices
     const output = [];
